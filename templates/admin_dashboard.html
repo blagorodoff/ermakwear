@@ -1,0 +1,13 @@
+{% extends "base_admin.html" %}
+
+{% block title %}Главная — ERMAK Admin{% endblock %}
+
+{% block content %}
+<h1>Добро пожаловать в админ-панель</h1>
+<p>Выберите раздел:</p>
+<ul>
+  <li><a href="{{ url_for('admin_collections') }}">Управление коллекциями</a></li>
+  <li><a href="{{ url_for('admin_categories') }}">Управление категориями</a></li>
+  <li><a href="{{ url_for('admin_products') }}">Управление товарами</a></li>
+</ul>
+{% endblock %}

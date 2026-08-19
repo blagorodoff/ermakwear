@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в админ-панель — ERMAK</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+  <style>
+    /* Дополнительные стили для страницы входа */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      font-family: 'SiteSans', Arial, sans-serif;
+      color: #fff;
+    }
+    .login-container {
+      background: #0D0D0D;
+      border: 1px solid #2A2A2A;
+      padding: 40px 48px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+    .login-title {
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 8px;
+      color: #fff;
+    }
+    .login-subtitle {
+      color: #A8A8A8;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+    .login-container label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #A8A8A8;
+    }
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 100%;
+      background: #1A1A1A;
+      border: 1px solid #2A2A2A;
+      color: #fff;
+      padding: 12px 14px;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 18px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-container input:focus {
+      border-color: #FF0000;
+    }
+    .login-container .btn-login {
+      width: 100%;
+      background: #FF0000;
+      border: none;
+      color: #000;
+      padding: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-container .btn-login:hover {
+      background: #cc0000;
+    }
+    .flash-messages {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+    }
+    .flash-messages li {
+      background: #2A0A0A;
+      border: 1px solid #FF0000;
+      color: #FF0000;
+      padding: 8px 12px;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1 class="login-title">ERMAK</h1>
+    <p class="login-subtitle">Вход в админ-панель</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('login') }}">
+      {{ form.hidden_tag() }}  <!-- CSRF-токен -->
+      <div>
+        {{ form.username.label }}
+        {{ form.username(class_="form-control") }}
+      </div>
+      <div>
+        {{ form.password.label }}
+        {{ form.password(class_="form-control") }}
+      </div>
+      {{ form.submit(class_="btn-login") }}
+    </form>
+  </div>
+</body>
+</html>

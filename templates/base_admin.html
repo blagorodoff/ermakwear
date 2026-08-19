@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Админ-панель ERMAK{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+    <style>
+        body.admin-body {
+            margin: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'SiteSans', Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: #0D0D0D;
+            border-bottom: 1px solid #2A2A2A;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .admin-header__logo {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .admin-header__logout {
+            color: #A8A8A8;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .admin-header__logout:hover {
+            color: #FF0000;
+        }
+
+        .admin-nav {
+            background: #0A0A0A;
+            border-bottom: 1px solid #2A2A2A;
+            padding: 0 24px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .admin-nav a {
+            color: #A8A8A8;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .admin-nav a:hover,
+        .admin-nav a.is-active {
+            color: #fff;
+            border-bottom-color: #FF0000;
+        }
+
+        .admin-content {
+            padding: 24px;
+        }
+
+        .admin-section-title {
+            font-size: 20px;
+            margin: 0 0 16px;
+            color: #fff;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            border: 1px solid #2A2A2A;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .admin-table th {
+            background: #0D0D0D;
+            color: #A8A8A8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+        }
+
+        .admin-table a {
+            color: #FF0000;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+
+        .admin-table a:hover {
+            text-decoration: underline;
+        }
+
+        .admin-btn {
+            display: inline-block;
+            background: #FF0000;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .admin-btn:hover {
+            background: #cc0000;
+            color: #000;
+        }
+
+        .admin-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #A8A8A8;
+        }
+
+        .admin-form input[type="text"],
+        .admin-form input[type="number"],
+        .admin-form textarea {
+            width: 100%;
+            background: #1A1A1A;
+            border: 1px solid #2A2A2A;
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .admin-form input:focus,
+        .admin-form textarea:focus {
+            border-color: #FF0000;
+        }
+
+        .admin-form .admin-btn {
+            width: auto;
+        }
+
+        .flash-messages {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+        }
+
+        .flash-messages li {
+            background: #2A0A0A;
+            border: 1px solid #FF0000;
+            color: #FF0000;
+            padding: 8px 12px;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .flash-messages li.success {
+            background: #0A2A0A;
+            border-color: #00FF00;
+            color: #00FF00;
+        }
+
+        .flash-messages li.info {
+            background: #0A0A2A;
+            border-color: #0000FF;
+            color: #0000FF;
+        }
+
+        /* Адаптивность админ-панели */
+        @media (max-width: 768px) {
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 12px 16px;
+            }
+
+            .admin-header__logo {
+                font-size: 16px;
+            }
+
+            .admin-nav {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 0 12px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .admin-nav a {
+                padding: 10px 8px;
+                font-size: 11px;
+            }
+
+            .admin-content {
+                padding: 16px 12px;
+            }
+
+            .admin-section-title {
+                font-size: 18px;
+            }
+
+            /* Таблицы: горизонтальный скролл и уменьшенные шрифты */
+            .admin-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .admin-table th,
+            .admin-table td {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            /* Кнопки действий в таблице не слипаются */
+            .admin-table a,
+            .admin-table button {
+                display: inline-block;
+                margin-right: 8px;
+                margin-bottom: 4px;
+            }
+
+            /* Формы: избегаем автоматического зума на iOS */
+            .admin-form input[type="text"],
+            .admin-form input[type="number"],
+            .admin-form textarea,
+            .admin-form select {
+                font-size: 16px;
+            }
+
+            .admin-btn {
+                display: inline-block;
+                margin-right: 8px;
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .admin-header__logo {
+                font-size: 15px;
+            }
+
+            .admin-nav a {
+                font-size: 10px;
+                letter-spacing: 0.5px;
+                padding: 8px 6px;
+            }
+
+            .admin-table th,
+            .admin-table td {
+                font-size: 11px;
+                padding: 6px;
+            }
+
+            .admin-btn {
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body class="admin-body">
+    <header class="admin-header">
+        <a class="admin-header__logo" href="{{ url_for('admin_dashboard') }}">ERMAK Admin</a>
+        <a class="admin-header__logout" href="{{ url_for('logout') }}">Выйти</a>
+    </header>
+    <nav class="admin-nav">
+        <a href="{{ url_for('admin_dashboard') }}">Главная</a>
+        <a href="{{ url_for('admin_collections') }}">Коллекции</a>
+        <a href="{{ url_for('admin_categories') }}">Категории</a>
+        <a href="{{ url_for('admin_products') }}">Товары</a>
+    </nav>
+    <main class="admin-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+
+</html>

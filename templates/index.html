@@ -1,0 +1,365 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>ERMAK</title>
+    <link href="{{ url_for('static', filename='css/site.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='images/favicon.ico') }}" rel="icon" />
+</head>
+
+<body class="site-body">
+    <div class="site" id="site">
+        <header class="hg-header">
+            <div class="hg-header__inner">
+                <a aria-label="ERMAK — на главную" class="hg-header__logo" href="#">
+                    <img alt="ERMAK" class="hg-header__logo-img"
+                        src="{{ url_for('static', filename='images/photo_2026-04-09_22-.png') }}" />
+                </a>
+                <nav aria-label="Основная навигация" class="hg-header__nav">
+                    <a class="hg-header__link" href="#catalog">
+                        <span>Каталог</span>
+                    </a>
+                    <a class="hg-header__link" href="#about">
+                        <span>О нас</span>
+                    </a>
+                    <a class="hg-header__link" href="#contacts">
+                        <span>Контакты</span>
+                    </a>
+                </nav>
+                <div class="hg-header__social">
+                    <a aria-label="Telegram" class="hg-header__social-link" href="https://t.me/ermakwear"
+                        rel="noopener noreferrer" target="_blank">
+                        <svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a aria-label="Instagram" class="hg-header__social-link"
+                        href="https://www.instagram.com/ermak.wear?igsh=b2JlZTQ3OHY1bWIw" rel="noopener noreferrer"
+                        target="_blank">
+                        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect height="19" rx="5" width="19" x="2.5" y="2.5"></rect>
+                            <circle cx="12" cy="12" r="4.2"></circle>
+                            <circle cx="17.3" cy="6.7" fill="currentColor" r="0.9" stroke="none"></circle>
+                        </svg>
+                    </a>
+                </div>
+                <button aria-expanded="false" aria-label="Меню" class="hg-header__burger" type="button">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div aria-hidden="true" class="hg-header__mobile">
+                <a class="hg-header__mobile-link" href="#catalog">Каталог</a>
+                <a class="hg-header__mobile-link" href="#about">О нас</a>
+                <a class="hg-header__mobile-link" href="#contacts">Контакты</a>
+                <div class="hg-header__mobile-social">
+                    <a aria-label="Telegram" href="https://t.me/ermakwear" rel="noopener noreferrer" target="_blank">
+                        <svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a aria-label="Instagram" href="https://www.instagram.com/ermak.wear?igsh=b2JlZTQ3OHY1bWIw"
+                        rel="noopener noreferrer" target="_blank">
+                        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect height="19" rx="5" width="19" x="2.5" y="2.5"></rect>
+                            <circle cx="12" cy="12" r="4.2"></circle>
+                            <circle cx="17.3" cy="6.7" fill="currentColor" r="0.9" stroke="none"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section id="hero">
+            <div class="kb-banner">
+                <div class="kb-banner__video-wrap">
+                    <video autoplay="" class="kb-banner__video" loop="" muted="" playsinline=""
+                        src="{{ url_for('static', filename='media/IMG_7124.MOV') }}"></video>
+                    <div class="kb-banner__overlay"></div>
+                </div>
+                <div class="kb-banner__emblem-wrap">
+                    <div class="kb-banner__center-content">
+                        <img alt="Эмблема Кубани" class="kb-banner__emblem"
+                            src="{{ url_for('static', filename='images/ChatGPT_Image_9__202.png') }}" />
+                        <a class="kb-banner__button btn-flex btn-flex_md" href="#catalog">
+                            <span class="btn-flex__text">Смотреть</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="kb-banner__footer">
+                    <div class="kb-banner__line"></div>
+                    <span class="kb-banner__title">Сделано на Кубани</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="catalog">
+            <section class="ec-cat" id="ecCatalog">
+                <div class="ec-cat__container">
+                    <div class="ec-cat__header">
+                        <div class="ec-cat__eyebrow">КАТАЛОГ</div>
+                        <h2 class="ec-cat__title">Наши <em>коллекции</em></h2>
+                    </div>
+
+                    <!-- ФИЛЬТРЫ -->
+                    <nav aria-label="Фильтр по коллекциям" class="ec-filter" id="ecFilter">
+                        <div class="ec-filter__scroll">
+                            <div class="ec-filter__track" id="ecFilterTrack">
+                                <button aria-pressed="true" class="ec-filter__btn is-active" data-filter="all"
+                                    type="button">
+                                    <span class="ec-filter__dot"></span>
+                                    Все
+                                    <span class="ec-filter__count">{{ total_products }}</span>
+                                </button>
+                                {% for coll_data in collections_data %}
+                                <button aria-pressed="false" class="ec-filter__btn"
+                                    data-filter="{{ coll_data.collection.id }}" type="button">
+                                    <span class="ec-filter__dot"></span>
+                                    {{ coll_data.collection.title }}
+                                    <span class="ec-filter__count">{{ collection_counts[coll_data.collection.id]
+                                        }}</span>
+                                </button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </nav>
+
+                    <!-- КОЛЛЕКЦИИ И ТОВАРЫ -->
+                    <div class="ec-cat__collections" id="ecCollections">
+                        {% for coll_data in collections_data %}
+                        <section class="ec-collection is-animating-in"
+                            data-collection-id="{{ coll_data.collection.id }}">
+                            <div class="ec-collection__header">
+                                <div class="ec-collection__label">{{ coll_data.collection.description or '' }}</div>
+                                <h3 class="ec-collection__title">{{ coll_data.collection.title }}</h3>
+                            </div>
+
+                            {% for group in coll_data.grouped_products %}
+                            <div class="ec-type-section">
+                                <div class="ec-type-header">
+                                    <span class="ec-type-header__accent"></span>
+                                    <h4 class="ec-type-header__title">{{ group.category.name }}</h4>
+                                </div>
+                                <div class="ec-collection__grid">
+                                    {% for product in group.products %}
+                                    <article class="ec-card" data-collection="{{ coll_data.collection.id }}"
+                                        data-id="{{ product.id }}" role="button" tabindex="0"
+                                        aria-label="{{ product.title }}" data-title="{{ product.title }}"
+                                        data-price="{{ product.price }}"
+                                        data-collection-title="{{ coll_data.collection.title }}"
+                                        data-category="{{ group.category.name }}"
+                                        data-images="{{ product.images|map(attribute='filename')|join(',') }}">
+                                        <div class="ec-card__media">
+                                            <div class="ec-card__type">{{ group.category.name }}</div>
+                                            {% set primary_img = product.images.filter_by(is_primary=True).first() %}
+                                            {% if primary_img %}
+                                            <img alt="{{ product.title }}" class="ec-card__img" loading="lazy"
+                                                src="{{ url_for('static', filename='uploads/products/' + primary_img.filename) }}" />
+                                            {% else %}
+                                            {% set first_img = product.images.first() %}
+                                            {% if first_img %}
+                                            <img alt="{{ product.title }}" class="ec-card__img" loading="lazy"
+                                                src="{{ url_for('static', filename='uploads/products/' + first_img.filename) }}" />
+                                            {% else %}
+                                            <img alt="{{ product.title }}" class="ec-card__img" loading="lazy"
+                                                src="{{ url_for('static', filename='images/ChatGPT_Image_9__202.png') }}" />
+                                            {% endif %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="ec-card__foot">
+                                            <h4 class="ec-card__title">{{ product.title }}</h4>
+                                            <button aria-label="В корзину" class="ec-card__buy" data-buy=""
+                                                data-id="{{ product.id }}" type="button">
+                                                <svg viewbox="0 0 16 16">
+                                                    <path d="M2 8h12M9 3l5 5-5 5"></path>
+                                                </svg>
+                                                <span>Выбрать</span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </section>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <!-- МОДАЛЬНОЕ ОКНО -->
+            <div aria-label="Карточка товара" aria-modal="true" class="ec-modal-backdrop" id="ecModal" role="dialog">
+                <div class="ec-modal" id="ecModalInner">
+                    <button aria-label="Закрыть" class="ec-modal__close" id="ecModalClose">
+                        <svg viewbox="0 0 14 14">
+                            <line x1="1" x2="13" y1="1" y2="13"></line>
+                            <line x1="13" x2="1" y1="1" y2="13"></line>
+                        </svg>
+                    </button>
+                    <div class="ec-modal__media">
+                        <div class="ec-modal__badge" id="ecModalBadge"></div>
+                        <div class="ec-modal__carousel">
+                            <img alt="" class="ec-modal__img" id="ecModalImg" src="" />
+                            <button class="ec-modal__arrow ec-modal__arrow--prev" id="ecModalPrev" type="button"
+                                aria-label="Предыдущее фото">&#10094;</button>
+                            <button class="ec-modal__arrow ec-modal__arrow--next" id="ecModalNext" type="button"
+                                aria-label="Следующее фото">&#10095;</button>
+                            <div class="ec-modal__dots" id="ecModalDots"></div>
+                        </div>
+                    </div>
+                    <div class="ec-modal__body">
+                        <div class="ec-modal__info">
+                            <div class="ec-modal__collection" id="ecModalCollection"></div>
+                            <h3 class="ec-modal__name" id="ecModalName"></h3>
+                            <div class="ec-modal__price" id="ecModalPrice">
+                                <span class="ec-modal__price-currency">₽</span>
+                                <span id="ecModalPriceVal"></span>
+                            </div>
+                        </div>
+                        <div class="ec-modal__divider"></div>
+                        <div class="ec-modal__actions">
+                            <button class="ec-modal__btn-buy" id="ecModalBuy" type="button">
+                                <svg viewbox="0 0 16 16">
+                                    <path d="M2 8h12M9 3l5 5-5 5"></path>
+                                </svg>
+                                <span id="ecModalBuyLabel">Купить</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <section class="ec-about" id="ecAbout">
+                <img alt="ERMAK — Коллекция доспех" class="ec-about__brand"
+                    src="{{ url_for('static', filename='images/ChatGPT_Image_9__202.png') }}" />
+                <div class="ec-about__container">
+                    <div class="ec-about__header">
+                        <div class="ec-about__head-left">
+                            <div class="ec-about__eyebrow">О нас</div>
+                            <h2 class="ec-about__title">Почему <em>мы?</em></h2>
+                        </div>
+                        <p class="ec-about__lead">«ERMAK» — это символ воли, которая не знает границ. Это мощь,
+                            прошедшая от седых кубанских степей до суровых сибирских хребтов. Это наш общий генетический
+                            код!</p>
+                    </div>
+                    <div class="ec-about__grid">
+                        <!-- Преимущества оставлены без изменений, только пути к изображениям заменены -->
+                        <article class="ec-advantage">
+                            <h3 class="ec-advantage__num">01</h3>
+                            <div class="ec-advantage__icon-wrap">
+                                <img alt="Премиальное качество" class="ec-advantage__icon"
+                                    src="{{ url_for('static', filename='images/guarantee.svg') }}" />
+                            </div>
+                            <div class="ec-advantage__body">
+                                <p class="ec-advantage__label">Премиальное качество</p>
+                                <h3 class="ec-advantage__title">Тщательно <em>отобранные</em> материалы</h3>
+                                <p class="ec-advantage__text">Мы работаем только с проверенными тканями — премиальный
+                                    хлопок, натуральный лён. Внимание к каждой детали: от первого стежка до финальной
+                                    упаковки.</p>
+                            </div>
+                        </article>
+                        <article class="ec-advantage">
+                            <h3 class="ec-advantage__num">02</h3>
+                            <div class="ec-advantage__icon-wrap">
+                                <img alt="Уникальный дизайн" class="ec-advantage__icon"
+                                    src="{{ url_for('static', filename='images/map_way_mark_where_adress.svg') }}" />
+                            </div>
+                            <div class="ec-advantage__body">
+                                <p class="ec-advantage__label">Уникальный дизайн</p>
+                                <h3 class="ec-advantage__title">Вещи <em>с характером</em></h3>
+                                <p class="ec-advantage__text">Авторские принты, продуманные лекала и южный характер. Для
+                                    тех, кто ценит индивидуальность, а не шаблоны.</p>
+                            </div>
+                        </article>
+                        <article class="ec-advantage">
+                            <h3 class="ec-advantage__num">03</h3>
+                            <div class="ec-advantage__icon-wrap">
+                                <img alt="Собственное производство" class="ec-advantage__icon"
+                                    src="{{ url_for('static', filename='images/builder_worker.svg') }}" />
+                            </div>
+                            <div class="ec-advantage__body">
+                                <p class="ec-advantage__label">Собственное производство</p>
+                                <h3 class="ec-advantage__title">Полный <em>контроль</em> качества</h3>
+                                <p class="ec-advantage__text">Производство находится внутри команды — от раскроя до
+                                    отшива. Никаких посредников, никаких компромиссов: мы видим каждый этап и отвечаем
+                                    за результат лично.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="ec-about__foot">
+                        <div class="ec-about__stat">
+                            <h4 class="ec-about__stat-num">1К <span>+</span></h4>
+                            <p class="ec-about__stat-label">Довольных клиентов</p>
+                        </div>
+                        <div class="ec-about__stat">
+                            <h4 class="ec-about__stat-num">100 <span>%</span></h4>
+                            <p class="ec-about__stat-label">Контроль качества</p>
+                        </div>
+                        <div class="ec-about__stat">
+                            <h4 class="ec-about__stat-num">24 <span>ч</span></h4>
+                            <p class="ec-about__stat-label">Обратная связь</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="contacts">
+            <section aria-label="Контакты" class="ec-contacts">
+                <div class="ec-contacts__container">
+                    <div class="ec-contacts__intro">
+                        <span aria-hidden="true" class="ec-contacts__mark"></span>
+                        <img alt="ERMAK" class="ec-contacts__logo"
+                            src="{{ url_for('static', filename='images/photo_2026-04-09_22-.png') }}" />
+                    </div>
+                    <p class="ec-contacts__slogan">Носи <span class="ec-contacts__slogan-accent">своё</span></p>
+                    <nav aria-label="Социальные сети" class="ec-contacts__links">
+                        <a aria-label="Перейти в Telegram" class="ec-contacts__link btn-flex btn-flex_sm"
+                            href="https://t.me/ermakwear" rel="noopener noreferrer" target="_blank">
+                            <svg aria-hidden="true" class="ec-contacts__icon" focusable="false" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.999 14.999l-.4 4.04c.572 0 .82-.246 1.118-.541l2.682-2.557 5.557 4.05c1.019.563 1.748.267 2.031-.943l3.682-17.245.001-.001c.327-1.532-.553-2.13-1.539-1.756L1.18 9.498c-1.456.564-1.434 1.374-.247 1.741l5.443 1.693 12.643-7.962c.594-.394 1.134-.176.69.218l-10.71 9.811z">
+                                </path>
+                            </svg>
+                            <span class="btn-flex__text">Telegram</span>
+                        </a>
+                        <a aria-label="Перейти в Instagram" class="ec-contacts__link btn-flex btn-flex_sm"
+                            href="https://www.instagram.com/ermak.wear?igsh=b2JlZTQ3OHY1bWIw" rel="noopener noreferrer"
+                            target="_blank">
+                            <svg aria-hidden="true" class="ec-contacts__icon" focusable="false" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.077 4.077 0 0 1 1.52.99 4.077 4.077 0 0 1 .99 1.52c.163.46.349 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.077 4.077 0 0 1-.99 1.52 4.077 4.077 0 0 1-1.52.99c-.46.163-1.26.349-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.077 4.077 0 0 1-1.52-.99 4.077 4.077 0 0 1-.99-1.52c-.163-.46-.349-1.26-.403-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.077 4.077 0 0 1 .99-1.52 4.077 4.077 0 0 1 1.52-.99c.46-.163 1.26-.349 2.43-.403C8.416 2.175 8.796 2.163 12 2.163zm0 1.946c-3.149 0-3.515.011-4.756.068-.96.044-1.482.204-1.83.339-.46.179-.788.393-1.134.739-.346.346-.56.674-.739 1.134-.135.348-.295.87-.339 1.83-.057 1.241-.068 1.607-.068 4.756s.011 3.515.068 4.756c.044.96.204 1.482.339 1.83.179.46.393.788.739 1.134.346.346.674.56 1.134.739.348.135.87.295 1.83.339 1.241.057 1.607.068 4.756.068s3.515-.011 4.756-.068c.96-.044 1.482-.204 1.83-.339.46-.179.788-.393 1.134-.739.346-.346.56-.674.739-1.134.135-.348.295-.87.339-1.83.057-1.241.068-1.607.068-4.756s-.011-3.515-.068-4.756c-.044-.96-.204-1.482-.339-1.83a3.05 3.05 0 0 0-.739-1.134 3.05 3.05 0 0 0-1.134-.739c-.348-.135-.87-.295-1.83-.339-1.241-.057-1.607-.068-4.756-.068zm0 3.31a4.581 4.581 0 1 1 0 9.162 4.581 4.581 0 0 1 0-9.162zm0 1.946a2.635 2.635 0 1 0 0 5.27 2.635 2.635 0 0 0 0-5.27zm5.846-2.166a1.07 1.07 0 1 1-2.14 0 1.07 1.07 0 0 1 2.14 0z">
+                                </path>
+                            </svg>
+                            <span class="btn-flex__text">Instagram</span>
+                        </a>
+                    </nav>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <footer class="brand-footer">
+        <div class="brand-footer__wrapper">
+            <div class="brand-footer__left">Made on</div>
+            <img alt="" class="brand-footer__img" src="{{ url_for('static', filename='images/brand-mark.png') }}" />
+            <div class="brand-footer__right">года</div>
+        </div>
+    </footer>
+
+    <script defer="True" src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>

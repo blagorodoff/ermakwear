@@ -1,0 +1,8 @@
+venv/
+__pycache__/
+*.pyc
+site.db
+instance/
+.env
+static/uploads/products/*
+!static/uploads/products/.gitkeep
